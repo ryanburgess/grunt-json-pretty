@@ -1,0 +1,44 @@
+{
+  "name": "grunt-json-pretty",
+  "version": "0.1.0",
+  "description": "Clean up the formatting of your JSON files.",
+  "keywords": [
+    "gruntplugin",
+    "format",
+    "files",
+    "json",
+    "grunt",
+    "optimize",
+    "clean",
+    "task"
+  ],
+  "homepage": "https://github.com/ryanburgess/grunt-json-pretty",
+  "bugs": {
+    "url": "https://github.com/ryanburgess/grunt-json-pretty/issues"
+  },
+  "author": {
+    "name": "Ryan Burgess",
+    "email": "rburgess@evernote.com",
+    "url": "http://ryanburgess.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ryanburgess/grunt-json-pretty.git"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "licenses": {
+    "type": "MIT"
+  }
+}
