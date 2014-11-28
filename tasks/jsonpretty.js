@@ -1,3 +1,11 @@
+/*
+ * grunt-json-pretty
+ * https://github.com/ryanburgess/grunt-json-pretty
+ *
+ * Copyright (c) 2014 Ryan Burgess
+ * Licensed under the MIT license.
+ */
+
 'use strict';
 
 module.exports = function (grunt) {
@@ -10,7 +18,9 @@ module.exports = function (grunt) {
       minFile,
       minContent,
       minFileContent,
-      indent;
+      indent,
+      successful = 0,
+      failed = 0;
 
     options = this.options({
       indent: 2,
@@ -24,24 +34,33 @@ module.exports = function (grunt) {
         cwd: options.files // Change this reference to your directory
       }, 
       ['**/*']).forEach(function(file){
-        fileFull = options.files + file;
-        fileContent = fs.readFileSync(fileFull);
-        content = JSON.parse(fileContent);
 
-        //Serialize as JSON and Write it to a file
-        fs.writeFileSync(fileFull, JSON.stringify(content, null, options.indent));
-        if(options.minify !== null){
-      
-          if(fileFull.indexOf('.min.json') > -1){
-            minContent = fs.readFileSync(minFile);
-          }else{
-            minFile = fileFull.replace('.json', '.min.json');
-            minContent = fs.readFileSync(fileFull);
+        try {
+          fileFull = options.files + file;
+          fileContent = fs.readFileSync(fileFull);
+          content = JSON.parse(fileContent);
+          successful++;
+
+          //Serialize as JSON and Write it to a file
+          fs.writeFileSync(fileFull, JSON.stringify(content, null, options.indent));
+          if(options.minify !== null){
+        
+            if(fileFull.indexOf('.min.json') > -1){
+              minContent = fs.readFileSync(minFile);
+            }else{
+              minFile = fileFull.replace('.json', '.min.json');
+              minContent = fs.readFileSync(fileFull);
+            }
+            minFileContent = JSON.parse(minContent);
+            fs.writeFileSync(minFile, JSON.stringify(minFileContent));
           }
-          minFileContent = JSON.parse(minContent);
-          fs.writeFileSync(minFile, JSON.stringify(minFileContent));
-          
+        }catch (e) {
+          failed++;
+          grunt.log.error('File "' + file + '" failed JSON pretty.');
+          grunt.fail.warn(e);
         }
     });
+    // output files updated
+    grunt.log.ok(successful + ' file' + (successful === 1 ? '' : 's') + ' JSON files updated.');
   });
 };
