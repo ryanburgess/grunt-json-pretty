@@ -8,6 +8,8 @@ module.exports = function (grunt) {
       fileFull,
       content,
       minFile,
+      minContent,
+      minFileContent,
       indent;
 
     options = this.options({
@@ -23,13 +25,22 @@ module.exports = function (grunt) {
       }, 
       ['**/*']).forEach(function(file){
         fileFull = options.files + file;
-        minFile = fileFull.replace('.json', '.min.json');
         fileContent = fs.readFileSync(fileFull);
         content = JSON.parse(fileContent);
+
         //Serialize as JSON and Write it to a file
         fs.writeFileSync(fileFull, JSON.stringify(content, null, options.indent));
-        if(options.minify === true){
-          fs.writeFileSync(minFile, JSON.stringify(content));
+        if(options.minify !== null){
+      
+          if(fileFull.indexOf('.min.json') > -1){
+            minContent = fs.readFileSync(minFile);
+          }else{
+            minFile = fileFull.replace('.json', '.min.json');
+            minContent = fs.readFileSync(fileFull);
+          }
+          minFileContent = JSON.parse(minContent);
+          fs.writeFileSync(minFile, JSON.stringify(minFileContent));
+          
         }
     });
   });
