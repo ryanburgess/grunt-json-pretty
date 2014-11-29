@@ -36,7 +36,8 @@ grunt.initConfig({
       options: {
         files: 'content/',
         indent: 4,
-        minify:true
+        minify:true,
+        append:'.min'
       },
    }
 });
@@ -44,6 +45,31 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-json-pretty');
 grunt.registerTask('default', ['json-pretty']);
 ```
+### Options
+
+#### files
+Type: `String`
+Default value: `content/`
+
+A reference to a directory that contains JSON files.
+
+#### indent
+Type: `Number`
+Default value: `4`
+
+A number of tab spaces to use in the formatting of JSON files.
+
+#### minify
+Type: `Boolean`
+Default value: `false`
+
+Create a minified version of each JSON file.
+
+#### append
+Type: `String`
+Default value: `'.min'`
+
+Append to minified version of each JSON file.
 
 ## Contributing
 

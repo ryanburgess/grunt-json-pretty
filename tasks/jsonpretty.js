@@ -25,7 +25,8 @@ module.exports = function (grunt) {
     options = this.options({
       indent: 2,
       files: '/content/',
-      minify: null
+      minify: null,
+      append: '.min'
     });
 
     // Get list of files depending on the file directory
@@ -45,10 +46,10 @@ module.exports = function (grunt) {
           fs.writeFileSync(fileFull, JSON.stringify(content, null, options.indent));
           if(options.minify !== null){
         
-            if(fileFull.indexOf('.min.json') > -1){
+            if(fileFull.indexOf(options.append+'.json') > -1){
               minContent = fs.readFileSync(minFile);
             }else{
-              minFile = fileFull.replace('.json', '.min.json');
+              minFile = fileFull.replace('.json', options.append+'.json');
               minContent = fs.readFileSync(fileFull);
             }
             minFileContent = JSON.parse(minContent);
