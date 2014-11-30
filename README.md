@@ -72,6 +72,8 @@ Default value: `'.min'`
 Append to minified version of each JSON file.
 
 ## Release History
+* 0.1.7: add release history notes to documentation.
+* 0.1.6: small adjustments.
 * 0.1.5 add the ability change appened string on minified JSON files.
 * 0.1.4: display output for successful and failed files.
 * 0.1.3: updates to documentation.
