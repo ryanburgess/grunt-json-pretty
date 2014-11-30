@@ -34,7 +34,7 @@ module.exports = function (grunt) {
       filter: 'isFile',
         cwd: options.files // Change this reference to your directory
       }, 
-      ['**/*']).forEach(function(file){
+      ['**/*.json']).forEach(function(file){
 
         try {
           fileFull = options.files + file;
@@ -43,8 +43,8 @@ module.exports = function (grunt) {
           successful++;
 
           //Serialize as JSON and Write it to a file
-          fs.writeFileSync(fileFull, JSON.stringify(content, null, options.indent));
-          if(options.minify !== null){
+          fs.writeFileSync(fileFull, JSON.stringify(content, false, options.indent));
+          if(options.minify !== false){
         
             if(fileFull.indexOf(options.append+'.json') > -1){
               minContent = fs.readFileSync(minFile);
