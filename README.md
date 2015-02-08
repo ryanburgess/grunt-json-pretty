@@ -72,6 +72,7 @@ Default value: `'.min'`
 Append to minified version of each JSON file.
 
 ## Release History
+* 0.1.8: add dev dependencies.
 * 0.1.7: add release history notes to documentation.
 * 0.1.6: small adjustments.
 * 0.1.5 add the ability change appened string on minified JSON files.
@@ -82,14 +83,13 @@ Append to minified version of each JSON file.
 * 0.1.0: Initial release.
 
 ## Contributing
-
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
+2. Run `npm install`
+3. Run Grunt watch `grunt watch`
+4. Create your feature branch (`git checkout -b my-new-feature`)
+5. Commit your changes (`git commit -am "Add some feature"`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create new Pull Request
 
 ## License
-
-MIT © [Ryan Burgess](http://ryanburgess.com)
+'MIT © [Ryan Burgess](http://github.com/ryanburgess)
