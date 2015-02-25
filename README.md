@@ -72,6 +72,7 @@ Default value: `'.min'`
 Append to minified version of each JSON file.
 
 ## Release History
+* 0.1.9: fix default minify JSON.
 * 0.1.8: add dev dependencies.
 * 0.1.7: add release history notes to documentation.
 * 0.1.6: small adjustments.

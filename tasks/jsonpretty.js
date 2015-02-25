@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     options = this.options({
       indent: 2,
       files: '/content/',
-      minify: null,
+      minify: false,
       append: '.min'
     });
 

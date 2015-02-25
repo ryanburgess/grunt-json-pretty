@@ -1,6 +1,6 @@
 {
   "name": "grunt-json-pretty",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Clean up the formatting of your JSON files.",
   "keywords": [
     "gruntplugin",
