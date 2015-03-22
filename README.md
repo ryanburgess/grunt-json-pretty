@@ -37,7 +37,8 @@ grunt.initConfig({
         files: 'content/',
         indent: 4,
         minify:true,
-        append:'.min'
+        append:'.min',
+        cleanup:true
       },
    }
 });
@@ -45,6 +46,26 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-json-pretty');
 grunt.registerTask('default', ['json-pretty']);
 ```
+
+### Example config with multiple directories
+
+```js
+grunt.initConfig({
+  'json-pretty': {
+      options: {
+        src: ['contentA/', 'contentB/','contentB/contentA/'],
+        indent: 4,
+        minify:true,
+        append:'.min',
+        cleanup:true
+      },
+   }
+});
+
+grunt.loadNpmTasks('grunt-json-pretty');
+grunt.registerTask('default', ['json-pretty']);
+```
+
 ### Options
 
 #### files
@@ -52,6 +73,11 @@ Type: `String`
 Default value: `content/`
 
 A reference to a directory that contains JSON files.
+
+#### src
+Type: `Array`
+
+A reference to multiple directories that contains JSON files.
 
 #### indent
 Type: `Number`
@@ -71,12 +97,21 @@ Default value: `'.min'`
 
 Append to minified version of each JSON file.
 
+#### cleanup
+Type: `Boolean`
+Default value: `false`
+
+Removes each original JSON file after minification.
+
+
+
 ## Release History
+* 0.2.0: Added support for multiple directories and file cleanup.
 * 0.1.9: fix default minify JSON.
 * 0.1.8: add dev dependencies.
 * 0.1.7: add release history notes to documentation.
 * 0.1.6: small adjustments.
-* 0.1.5 add the ability change appened string on minified JSON files.
+* 0.1.5  add the ability change appened string on minified JSON files.
 * 0.1.4: display output for successful and failed files.
 * 0.1.3: updates to documentation.
 * 0.1.2: updates to documentation.
