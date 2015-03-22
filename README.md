@@ -46,13 +46,38 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-json-pretty');
 grunt.registerTask('default', ['json-pretty']);
 ```
+
+### Example config with mutitple directories
+
+```js
+grunt.initConfig({
+  'json-pretty': {
+      options: {
+        src: ['contentA/', 'contentB/','contentB/contentA/'],
+        indent: 4,
+        minify:true,
+        append:'.min',
+        cleanup:true
+      },
+   }
+});
+
+grunt.loadNpmTasks('grunt-json-pretty');
+grunt.registerTask('default', ['json-pretty']);
+```
+
 ### Options
 
 #### files
-Type: `String` | `Array`
+Type: `String`
 Default value: `content/`
 
-A reference to a directory or directories that contains JSON files.
+A reference to a directory that contains JSON files.
+
+#### src
+Type: `Array`
+
+A reference to multiple directories that contains JSON files.
 
 #### indent
 Type: `Number`

@@ -25,8 +25,10 @@ module.exports = function(grunt) {
         });
 
         //set directory(ies)
-        if (Array.isArray(options.src || options.files)) directories = options.src || options.files;
-        else directories.push(options.src || options.files);
+        if (Array.isArray(options.src)) directories = options.src;
+        //just in case options.src can be a string
+        else if (typeof options.src == 'string' || options.src instanceof String) directories.push(options.src);
+        else directories.push(options.files);
 
         //prettify & minify function
         function pretty(directory) {
