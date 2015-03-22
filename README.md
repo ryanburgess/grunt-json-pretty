@@ -1,6 +1,8 @@
 Grunt JSON Pretty
 =================
 
+[![npm version](https://badge.fury.io/js/grunt-json-pretty.svg)](http://badge.fury.io/js/grunt-json-pretty)
+
 Clean up the formatting of your JSON files.
 
 ## Getting Started
@@ -106,6 +108,7 @@ Removes each original JSON file after minification.
 
 
 ## Release History
+* 0.2.1: Merged [pull #1](https://github.com/evernote/grunt-json-pretty/pull/1)
 * 0.2.0: Added support for multiple directories and file cleanup.
 * 0.1.9: fix default minify JSON.
 * 0.1.8: add dev dependencies.
