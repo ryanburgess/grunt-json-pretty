@@ -47,7 +47,7 @@ grunt.loadNpmTasks('grunt-json-pretty');
 grunt.registerTask('default', ['json-pretty']);
 ```
 
-### Example config with mutitple directories
+### Example config with multiple directories
 
 ```js
 grunt.initConfig({
