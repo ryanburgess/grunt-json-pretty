@@ -20,50 +20,54 @@ module.exports = function(grunt) {
             indent: 2,
             files: '/content/',
             minify: false,
-            append: '.min'
+            append: '.min',
+            cleanup: false
         });
 
         //set directory(ies)
         if (Array.isArray(options.src || options.files)) directories = options.src || options.files;
         else directories.push(options.src || options.files);
 
-        //prettify function
+        //prettify & minify function
         function pretty(directory) {
             return function(file) {
                 try {
-                   //set file
+                    //set file
                     file = directory + file;
                     //read the file and parse
                     json = JSON.parse(fs.readFileSync(file));
                     successful++;
 
-                    //Serialize as JSON and Write it to a file
                     fs.writeFileSync(file, JSON.stringify(json, false, options.indent));
+
                     if (options.minify === true) {
-                      //set the file
-                      file = file.indexOf(options.append + '.json') > -1 ? file : file.replace('.json', options.append + '.json');
-                      //read file and parse
-                      json = JSON.parse(fs.readFileSync(file));
-                      //write the minified file
-                      fs.writeFileSync(file, JSON.stringify(json));
+                        //set the file
+                        var minified = file.indexOf(options.append + '.json') === -1 ? file.replace('.json', options.append + '.json') : file;
+                        //read file and parse
+                        json = JSON.parse(fs.readFileSync(file));
+                        //clean up if enabled and file exists
+                        if(options.cleanup && grunt.file.exists(file.replace('.min',''))) grunt.file.delete(file.replace('.min',''));
+                        //write the minified file
+                        fs.writeFileSync(minified, JSON.stringify(json));
                     }
+
                 } catch (e) {
                     failed++;
-                    grunt.log.error('File "' + file + '" failed JSON pretty.');
+                    grunt.log.error('File "' + file.replace(directory, '') + '" failed JSON pretty.');
                     grunt.fail.warn(e);
                 }
             }
         }
 
         directories.forEach(function(directory) {
-          //maybe a directory doesn't have a '/' ?
-          directory = directory.slice(-1) === '/' ? directory : directory + "/";
+            //maybe a directory doesn't have a '/' ?
+            directory = directory.slice(-1) === '/' ? directory : directory + "/";
             // Get list of files depending on the file directory
             grunt.file.expand({
                 filter: 'isFile',
                 cwd: directory // Change this reference to your directory
             }, ['**/*.json']).forEach(pretty(directory));
         })
-        grunt.log.ok(successful + ' file' + (successful === 1 ? '' : 's') + ' JSON files prettified.');
+        grunt.log.ok(successful + ' file' + (successful === 1 ? '' : 's') + ' JSON files ' + (options.minify ? 'minified': 'prettified.'));
     });
 };
