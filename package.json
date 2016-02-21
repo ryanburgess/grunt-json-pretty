@@ -28,8 +28,7 @@
   "scripts": {
     "test": "grunt"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
@@ -39,7 +38,7 @@
     "jshint-stylish": "^1.0.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": ">=0.4.0"
   },
   "engines": {
     "node": ">=0.10.0"
