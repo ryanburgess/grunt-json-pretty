@@ -1,6 +1,6 @@
 {
   "name": "grunt-json-pretty",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Clean up the formatting of your JSON files.",
   "keywords": [
     "gruntplugin",
@@ -18,7 +18,6 @@
   },
   "author": {
     "name": "Ryan Burgess",
-    "email": "rburgess@evernote.com",
     "url": "http://ryanburgess.com"
   },
   "repository": {

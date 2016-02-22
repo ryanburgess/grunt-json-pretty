@@ -108,6 +108,7 @@ Removes each original JSON file after minification.
 
 
 ## Release History
+* 0.2.2: Merged [pull #2](https://github.com/evernote/grunt-json-pretty/pull/2)
 * 0.2.1: Merged [pull #1](https://github.com/evernote/grunt-json-pretty/pull/1)
 * 0.2.0: Added support for multiple directories and file cleanup.
 * 0.1.9: fix default minify JSON.
